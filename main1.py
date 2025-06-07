@@ -24,9 +24,8 @@ db = firebase.database()
 
 def main(page: ft.Page):
     page.title = "ควบคุม เปิด-ปิด ประตู"
-    page.window_width = 390
-    page.window_height = 844
-    page.window_maximizable = False
+    page.window_width = 900
+    page.window_height = 600
 
     def check_internet():
         try:
@@ -116,7 +115,7 @@ def main(page: ft.Page):
         sw_women_pause.on_click = toggle_pause2
 
         update_switch_status()
-
+        
         MenuTemplat=ft.NavigationBar(
           
                         # on_change=lambda e: print("Selected tab:", e.control.selected_index), 
@@ -137,7 +136,7 @@ def main(page: ft.Page):
                 ft.Icon(ft.icons.HOME, size=80, color="blue"),
                 ft.Row([
                     ft.Text("ชาย"),sw_men,
-                    ft.Text("หยุด"),sw_men_pause
+                    ft.Text("หยุดชาย"),sw_men_pause
                 ], alignment=ft.MainAxisAlignment.CENTER),
                 # ft.Row([
                 #     ft.Text("หยุดชาย"),
@@ -145,7 +144,7 @@ def main(page: ft.Page):
                 # ], alignment=ft.MainAxisAlignment.CENTER),
                 ft.Row([
                     ft.Text("หญิง"),sw_women,
-                    ft.Text("หยุด"),sw_women_pause
+                    ft.Text("หยุดหญิง"),sw_women_pause
                 ], alignment=ft.MainAxisAlignment.CENTER),
                 # ft.Row([
                 #     ft.Text("หยุดหญิง"),
@@ -180,10 +179,10 @@ def main(page: ft.Page):
             def run():
                 while True:
                     if check_internet():
-                        internet_status.value = "Internet: Connected"
+                        internet_status.value = "Status: Ready..."
                         internet_status.color = ft.colors.GREEN
                     else:
-                        internet_status.value = "Internet: Disconnected"
+                        internet_status.value = "Status: Disconnected"
                         internet_status.color = ft.colors.RED
                     page.update()
                     time.sleep(3)
@@ -234,15 +233,7 @@ def main(page: ft.Page):
                                         internet_status,
                                         username,
                                         password,
-                                        # ft.ElevatedButton("Login", on_click=login),
-                                        ft.CupertinoFilledButton(
-                                        content=ft.Text("LOGIN"),
-                                        opacity_on_click=0.3,
-                                        # on_click=lambda e: print(f"LOGIN! {username.value},{password.value}"),
-                                        on_click= login,
-                                        width=250,
-                                        height=50,
-                                    ),
+                                        ft.ElevatedButton("Login", on_click=login),
                                         message
                                     ],
                                     horizontal_alignment=ft.CrossAxisAlignment.CENTER,
