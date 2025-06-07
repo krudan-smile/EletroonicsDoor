@@ -261,4 +261,5 @@ def main(page: ft.Page):
 
     show_login()
 
-ft.app(target=main)
+ft.app(target=main, view=ft.WEB_BROWSER)
+
