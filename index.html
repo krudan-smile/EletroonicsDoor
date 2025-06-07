@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Door Control App</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#2196F3">
+
+    <!-- PWA iOS support -->
+    <link rel="apple-touch-icon" href="/static/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Door Control App">
+
+    <!-- Register Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }).catch(function(error) {
+          console.log('ServiceWorker registration failed:', error);
+        });
+      }
+    </script>
+</head>
+<body>
+    <!-- Flet App Script -->
+    <script type="module" src="/_app/main.js"></script>
+
+    <!-- Optional fallback -->
+    <noscript>Please enable JavaScript to run this app.</noscript>
+</body>
+</html>
